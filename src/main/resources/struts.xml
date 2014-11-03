@@ -89,6 +89,44 @@
           <result>/pages/articlegroups.jsp</result>
         </action> 
     </package>
-  
+    
+     <package name="Region" namespace="/Region" extends="struts-default">      
+        <action name="list" class="d3Soft.hisys.controller.RegionAction" method="listRegions">
+            <result>/pages/regions.jsp</result>
+        </action>
+        <action name="add" class="d3Soft.hisys.controller.RegionAction" method="addRegion">
+            <result type="redirect">/Region/list</result>
+        </action>
+        <action name="delete/*" class="d3Soft.hisys.controller.RegionAction" method="deleteRegion">
+            <param name="region.id">{1}</param>
+            <result type="redirect">/Region/list</result>
+        </action>
+        <action name="update/*" class="d3Soft.hisys.controller.RegionAction" method="updateRegion">
+            <param name="region.id">{1}</param>
+            <result>/pages/regions.jsp</result>
+        </action>
+        <action name="*" class="d3Soft.hisys.controller.RegionAction"  method="listRegions">
+          <result>/pages/regions.jsp</result>
+        </action> 
+    </package>
+   <package name="City" namespace="/City" extends="struts-default">      
+        <action name="list" class="d3Soft.hisys.controller.CityAction" method="listCities">
+            <result>/pages/cities.jsp</result>
+        </action>
+        <action name="add" class="d3Soft.hisys.controller.CityAction" method="addCity">
+            <result type="redirect">/City/list</result>
+        </action>
+        <action name="delete/*" class="d3Soft.hisys.controller.CityAction" method="deleteCity">
+            <param name="city.id">{1}</param>
+            <result type="redirect">/City/list</result>
+        </action>
+        <action name="update/*" class="d3Soft.hisys.controller.CityAction" method="updateCity">
+            <param name="city.id">{1}</param>
+            <result>/pages/cities.jsp</result>
+        </action>
+        <action name="*" class="d3Soft.hisys.controller.CityAction"  method="listCitys">
+          <result>/pages/cities.jsp</result>
+        </action> 
+    </package>
      
 </struts>

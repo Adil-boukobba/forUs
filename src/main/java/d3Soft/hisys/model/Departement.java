@@ -18,7 +18,41 @@ public class Departement {
 	private String name;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="hospital_id")
 	private Hospital hospital;
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="department")
 	private List<Section> sections;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public int getCode() {
+		return code;
+	}
+	public void setCode(int code) {
+		this.code = code;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Hospital getHospital() {
+		return hospital;
+	}
+	public void setHospital(Hospital hospital) {
+		this.hospital = hospital;
+	}
+	public List<Section> getSections() {
+		return sections;
+	}
+	public void setSections(List<Section> sections) {
+		this.sections = sections;
+	}
+	
+	
+	
 }

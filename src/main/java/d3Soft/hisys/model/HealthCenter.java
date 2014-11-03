@@ -16,6 +16,7 @@ public class HealthCenter {
 	private String name;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="city_id")
 	private City city;
 	
 	@OneToMany(fetch=FetchType.LAZY,mappedBy="center")

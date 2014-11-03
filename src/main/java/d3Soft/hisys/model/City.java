@@ -19,6 +19,7 @@ public class City {
 	private String name;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="region_id")
 	private Region region;
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="city")

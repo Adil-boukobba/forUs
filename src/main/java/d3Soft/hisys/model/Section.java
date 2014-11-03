@@ -16,6 +16,7 @@ public class Section {
 	private String name;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="department_id")
 	private Departement department;
 
 	public int getId() {

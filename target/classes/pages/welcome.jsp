@@ -11,5 +11,7 @@
 <a href="Article/list"> Article </a>
 <a href="Famille/list"> Famille</a>
 <a href="Group/list"> Group</a>
+<a href="Region/list"> Regions</a>
+<a href="City/list"> Cities</a>
 </body>
 </html>
