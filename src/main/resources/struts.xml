@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">  
+ 
+<struts>
+    <!-- devMode is helpful when you want some extra logs for debugging -->
+    <constant name="struts.devMode" value="false" />
+    <!-- Global message resource; 
+         Otherwise you will have seperate message resource for each Action 
+    -->
+    <constant name="struts.custom.i18n.resources" value="messages" /> 
+    <!-- 
+        This is important if you are planning to have slashes in Action URLs
+        e.g. In this demo, employee is deleted using URL /delete/10
+        This this is set to false; then struts will try to find mapping for 
+        URL "/10" instaed of "/delete/10"
+     -->
+    <constant name="struts.enable.SlashesInActionNames" value="true"/>
+      
+    <!-- Normal Action mappings are defined here -->
+        <package name="default" namespace="" extends="struts-default">
+       
+        <action name="*" class="d3Soft.hisys.controller.WelcomeAction"  method="welcome">
+          <result>/pages/welcome.jsp</result>
+        </action> 
+    </package>
+    
+    <package name="Article" namespace="/Article" extends="struts-default">      
+        <action name="list" class="d3Soft.hisys.controller.ArticleAction" method="listArticles">
+            <result>/pages/articles.jsp</result>
+        </action>
+        <action name="add" class="d3Soft.hisys.controller.ArticleAction" method="addArticle">
+            <result type="redirect">/Article/list</result>
+        </action>
+        <action name="delete/*" class="d3Soft.hisys.controller.ArticleAction" method="deleteArticle">
+            <param name="article.id">{1}</param>
+            <result type="redirect">/Article/list</result>
+        </action>
+        <action name="update/*" class="d3Soft.hisys.controller.ArticleAction" method="updateArticle">
+            <param name="article.id">{1}</param>
+            <result>/pages/articles.jsp</result>
+        </action>
+        <action name="*" class="d3Soft.hisys.controller.ArticleAction"  method="listArticles">
+          <result>/pages/articles.jsp</result>
+        </action> 
+    </package>
+    
+     <package name="Famille" namespace="/Famille" extends="struts-default">      
+        <action name="list" class="d3Soft.hisys.controller.ArticleFamilleAction" method="listFamilles">
+            <result>/pages/articlefamilles.jsp</result>
+        </action>
+        <action name="add" class="d3Soft.hisys.controller.ArticleFamilleAction" method="addFamille">
+            <result type="redirect">/Famille/list</result>
+        </action>
+        <action name="delete/*" class="d3Soft.hisys.controller.ArticleFamilleAction" method="deleteFamille">
+            <param name="famille.id">{1}</param>
+            <result type="redirect">/Famille/list</result>
+        </action>
+         <action name="prepare/*" class="d3Soft.hisys.controller.ArticleFamilleAction" method="toUpdate">
+            <param name="famille.id">{1}</param>
+            <result type="redirect">/Famille/list</result>
+        </action>
+        <action name="update/*" class="d3Soft.hisys.controller.ArticleFamilleAction" method="updateFamille">
+            <param name="famille.id">{1}</param>
+            <result type="redirect">/Famille/list</result>
+        </action>
+        <action name="*" class="d3Soft.hisys.controller.ArticleFamilleAction"  method="listFamilles">
+          <result>/pages/articlefamilles.jsp</result>
+        </action> 
+    </package>
+    
+    <package name="Group" namespace="/Group" extends="struts-default">      
+        <action name="list" class="d3Soft.hisys.controller.ArticleGroupAction" method="listGroups">
+            <result>/pages/articlegroups.jsp</result>
+        </action>
+        <action name="add" class="d3Soft.hisys.controller.ArticleGroupAction" method="addGroup">
+            <result type="redirect">/Group/list</result>
+        </action>
+        <action name="delete/*" class="d3Soft.hisys.controller.ArticleGroupAction" method="deleteGroup">
+            <param name="famille.id">{1}</param>
+            <result type="redirect">/Group/list</result>
+        </action>
+        <action name="update/*" class="d3Soft.hisys.controller.ArticleGroupAction" method="updateGroup">
+            <param name="famille.id">{1}</param>
+            <result type="redirect">/Group/list</result>
+        </action>
+        <action name="*" class="d3Soft.hisys.controller.ArticleGroupAction"  method="listGroup">
+          <result>/pages/articlegroups.jsp</result>
+        </action> 
+    </package>
+  
+     
+</struts>
