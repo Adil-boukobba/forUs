@@ -28,6 +28,15 @@ public class ArticleGroupAction extends ActionSupport {
 	private ArticleGroup group;
 	private List<ArticleGroup> groups;
 	private List<ArticleFamille> familles;
+	private boolean updated;
+	
+	
+	public boolean isUpdated() {
+		return updated;
+	}
+	public void setUpdated(boolean updated) {
+		this.updated = updated;
+	}
 	public ArticleGroupService getArticleGroupService() {
 		return articleGroupService;
 	}
@@ -68,8 +77,12 @@ public class ArticleGroupAction extends ActionSupport {
     }
 	
 	public String addGroup() {
-        logger.info("addGroup method called");
-        articleGroupService.insert(group);
+        logger.info("addGroup method called");        
+        if(updated==false)
+        	articleGroupService.insert(group);
+        else 
+        	articleGroupService.update(group);
+        updated=false;
         return SUCCESS;
     }
 	public String deleteGroup() {
@@ -79,8 +92,10 @@ public class ArticleGroupAction extends ActionSupport {
     }
 	
 	public String updateGroup() {
-        logger.info("updateGroup method called");
-        articleGroupService.update(group);
+        logger.info("prepareupdategroup method called");
+        updated=true;                 
+        familles= articleFamilleService.getAll();
+        groups= articleGroupService.getAll();       
         return SUCCESS;
     }
 	

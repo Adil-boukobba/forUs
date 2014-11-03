@@ -101,7 +101,6 @@ public class ArticleAction extends ActionSupport{
 	
 	public String addArticle() {
         logger.info("addArticle method called");
-        System.err.println(updated+"heeeeeeeeeeeeeh");
         if(updated==false)
         	articleService.insert(article);
         else 

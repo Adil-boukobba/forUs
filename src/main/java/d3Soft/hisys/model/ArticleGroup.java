@@ -11,7 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PreRemove;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name="tab_ArticleGroup")
@@ -33,7 +35,7 @@ public class ArticleGroup {
 	private ArticleFamille famille;
 	
 	/*----- Article list-------*/
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="group")
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="group")	
 	private List<Article> articles;
 	
 	
@@ -69,5 +71,10 @@ public class ArticleGroup {
 	}
 	
 	
-	
+	@PreRemove
+	private void preRemove() {
+	    for (Article art : articles) {
+	        art.setIdArticle(2);
+	    }
+	}
 }

@@ -57,13 +57,13 @@
             <param name="famille.id">{1}</param>
             <result type="redirect">/Famille/list</result>
         </action>
-         <action name="prepare/*" class="d3Soft.hisys.controller.ArticleFamilleAction" method="toUpdate">
+         <action name="prepare/*" class="d3Soft.hisys.controller.ArticleFamilleAction" method="updateFamille">
             <param name="famille.id">{1}</param>
             <result type="redirect">/Famille/list</result>
         </action>
         <action name="update/*" class="d3Soft.hisys.controller.ArticleFamilleAction" method="updateFamille">
             <param name="famille.id">{1}</param>
-            <result type="redirect">/Famille/list</result>
+            <result >/pages/articlefamilles.jsp</result>
         </action>
         <action name="*" class="d3Soft.hisys.controller.ArticleFamilleAction"  method="listFamilles">
           <result>/pages/articlefamilles.jsp</result>
@@ -78,12 +78,12 @@
             <result type="redirect">/Group/list</result>
         </action>
         <action name="delete/*" class="d3Soft.hisys.controller.ArticleGroupAction" method="deleteGroup">
-            <param name="famille.id">{1}</param>
+            <param name="group.id">{1}</param>
             <result type="redirect">/Group/list</result>
         </action>
         <action name="update/*" class="d3Soft.hisys.controller.ArticleGroupAction" method="updateGroup">
-            <param name="famille.id">{1}</param>
-            <result type="redirect">/Group/list</result>
+            <param name="group.id">{1}</param>
+            <result >/pages/articlegroups.jsp</result>
         </action>
         <action name="*" class="d3Soft.hisys.controller.ArticleGroupAction"  method="listGroup">
           <result>/pages/articlegroups.jsp</result>

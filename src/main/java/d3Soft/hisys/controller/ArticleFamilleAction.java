@@ -27,6 +27,19 @@ public class ArticleFamilleAction extends ActionSupport {
 	private ArticleFamille famille;
 	private List<ArticleFamille> familles;
 	
+	private boolean updated;
+	
+	
+	
+	
+	public boolean isUpdated() {
+		return updated;
+	}
+
+	public void setUpdated(boolean updated) {
+		this.updated = updated;
+	}
+
 	public ArticleFamilleService getArticleFamilleService() {
 		return articleFamilleService;
 	}
@@ -71,33 +84,31 @@ public class ArticleFamilleAction extends ActionSupport {
     }
 	
 	public String addFamille() {
-        logger.info("addArticle method called");
-        articleFamilleService.insert(famille);
+		 logger.info("addArticleFamille method called");
+	        if(updated==false)
+	        	articleFamilleService.insert(famille);
+	        else 
+	        	articleFamilleService.update(famille);
+	        updated=false;
         return SUCCESS;
     }
 	public String deleteFamille() {
-        logger.info("deleteArticle method called");
+        logger.info("deleteArticleFamille method called");
         articleFamilleService.delete(famille);
         return SUCCESS;
     }
 	
-	public String toUpdate()
-	{
-		logger.info("prepare to update called");
-		toUse=articleFamilleService.byId(famille.getId());
-		return SUCCESS;		
-	}
-	
 	public String updateFamille() {
-        logger.info("updateArticle method called");
-        articleFamilleService.update(famille);
+        logger.info("prepareupdateArticle method called");
+        updated=true;                       
+        familles = articleFamilleService.getAll();
         return SUCCESS;
     }
 	
-//	 public void prepare() throws Exception {
-//	        famille = null;
-//	        
-//	    }
-//	
+	 public void prepare() throws Exception {
+	        famille = null;
+	        
+	    }
+	
 	
 }

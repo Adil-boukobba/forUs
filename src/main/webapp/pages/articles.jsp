@@ -30,7 +30,7 @@
 		<input type="hidden" name="updated" value="${updated }">
 	</td>
 	<td>		
-		<input type="text" name="article.id" value="${article.id}">
+		<input type="hidden" name="article.id" value="${article.id}">
 	</td>
 	</tr>
 </c:if>
@@ -41,7 +41,7 @@
 	<select  name="article.famille.id" style="width:142px;height:22px">
 		<c:if  test="${!empty familles}">
 			 <c:forEach items="${familles}" var="fam">
-			<option value="${fam.id}">${fam.nbr}</option>
+			<option value="${fam.id}"  <c:if  test="${article.famille.id==fam.id}"> selected="selected"</c:if> >${fam.nbr}</option>
 			</c:forEach>
 		</c:if>
 	</select>
@@ -55,7 +55,7 @@
 	<select  name="article.group.id" style="width:142px;height:22px">
 		<c:if  test="${!empty groups}">
 			 <c:forEach items="${groups}" var="gr">
-			<option value="${gr.id}">${gr.nbr}</option>
+			<option value="${gr.id}"  <c:if  test="${gr.id==article.group.id}"> selected="selected"</c:if>  >${gr.nbr}</option>
 			</c:forEach>
 		</c:if>
 	</select>
@@ -63,23 +63,26 @@
 </tr>
 <tr>
 	<td>
+	Libelle
 	</td>
 	<td>
-	<s:textfield key="Libelle" name="article.libelle"></s:textfield> 
-	</td>
-</tr>
-<tr>
-	<td>
-	</td>
-	<td>
-	<s:textfield key="Valid From" name="article.validfrom"></s:textfield> 
+	<input type="text"  name="article.libelle" value='<c:if test="${!empty article.id} }"> ${article.nbr }</c:if>'/>
 	</td>
 </tr>
 <tr>
 	<td>
+	Valid From
 	</td>
 	<td>
-	<s:textfield key="Valid To" name="article.validto"></s:textfield> 
+	<input type="text" name="article.validfrom" value='<c:if  test="${!empty gr.id}"> ${article.validfrom }</c:if>' />
+	</td>
+</tr>
+<tr>
+	<td>
+	Valid To
+	</td>
+	<td>
+	<input type="text" name="article.validto"  value='<c:if  test="${!empty gr.id}"> ${article.validto }</c:if>'/>
 	</td>
 </tr>
 

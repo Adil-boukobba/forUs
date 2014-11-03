@@ -21,16 +21,29 @@
 
 
 <s:form action="add" method="post">
+<c:if test="${ updated ==true }"> 
+<tr>
+	<td>
+		
+			
+		<input type="hidden" name="updated" value="${updated }">
+	</td>
+	<td>		
+		<input type="text" name="famille.id" value="${famille.id}">
+	</td>
+	</tr>
+</c:if>
 
  <table>
     	<tr>
-            <td><s:textfield key="ID" name="famille.idFamille" /></td>
+           <td>ID</td> <td><input type="text" name="famille.idFamille" value='<c:if test="${ updated ==true }"> ${famille.idFamille }</c:if>'/></td>
         </tr>    
         <tr>
-            <td><s:textfield key="Nom " name="famille.nbr"/></td>
+            <td>Nom</td><td><input type="text" name="famille.nbr" value='<c:if test="${ updated ==true }"> ${famille.nbr }</c:if>'/></td>
         </tr>
         
         <tr>
+        <td></td>
             <td>
                 <s:submit key="Add"></s:submit>
             </td>

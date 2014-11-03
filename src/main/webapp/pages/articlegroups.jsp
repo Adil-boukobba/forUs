@@ -21,6 +21,20 @@
 
 <s:form method="post" action="add">
 <table>
+
+<c:if test="${ updated ==true }"> 
+<tr>
+	<td>
+		
+			
+		<input type="hidden" name="updated" value="${updated }">
+	</td>
+	<td>		
+		<input type="hidden" name="group.id" value="${group.id}">
+	</td>
+	</tr>
+</c:if>
+
 	<tr>
 	
 		<td>
@@ -28,7 +42,7 @@
 		</td>
 		
 		<td>
-		 <s:textfield name="group.idGroup"></s:textfield>
+		 <input type="text" name="group.idGroup" <c:if test="${updated==true }">value='${ group.idGroup}'</c:if>/>
 		 </td>
 	</tr>	
 <tr>	
@@ -37,7 +51,7 @@
 		</td>
 		
 		<td>
-		 <s:textfield name="group.nbr"></s:textfield>
+		 <input type="text" name="group.nbr" value='<c:if test="${updated==true }">${group.nbr}</c:if>'/>
 		 </td>
 	</tr>	
 <tr>
