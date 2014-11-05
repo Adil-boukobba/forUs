@@ -36,10 +36,10 @@
 
  <table>
     	<tr>
-           <td>ID</td> <td><input type="text" name="famille.idFamille" value='<c:if test="${ updated ==true }"> ${famille.idFamille }</c:if>'/></td>
+           <td>ID</td> <td><input type="text" name="famille.idFamille"<c:if test="${ updated ==true }"> value=' ${famille.idFamille }'</c:if>/></td>
         </tr>    
         <tr>
-            <td>Nom</td><td><input type="text" name="famille.nbr" value='<c:if test="${ updated ==true }"> ${famille.nbr }</c:if>'/></td>
+            <td>Nom</td><td><input type="text" name="famille.nbr" <c:if test="${ updated ==true }">value=' ${famille.nbr }'</c:if>/></td>
         </tr>
         
         <tr>

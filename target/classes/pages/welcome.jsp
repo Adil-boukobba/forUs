@@ -7,11 +7,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Insert title here</title>
 </head>
-<body>
-<a href="Article/list"> Article </a>
-<a href="Famille/list"> Famille</a>
-<a href="Group/list"> Group</a>
-<a href="Region/list"> Regions</a>
-<a href="City/list"> Cities</a>
-</body>
+<%@include file="../WEB-INF/fragement/header.jspf" %>
+<%@include file="../WEB-INF/fragement/head.jspf" %>
+<%@include file="../WEB-INF/fragement/menu.jspf" %>
+
+
+
+<!-- <a href="Article/list"> Article </a> -->
+<!-- <a href="Famille/list"> Famille</a> -->
+<!-- <a href="Group/list"> Group</a> -->
+<!-- <a href="Region/list"> Regions</a> -->
+<!-- <a href="City/list"> Cities</a> -->
+<!-- <a href="HealthCenter/list"> Centers</a> -->
+<!-- <a href="Hospital/list"> Hospitals</a> -->
+
+
+
+<%@include file="../WEB-INF/fragement/footer.jspf" %>
 </html>

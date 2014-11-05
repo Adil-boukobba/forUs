@@ -10,4 +10,5 @@ public interface CityDao {
     public void delete(City city);
     public City byId(int id);
     public List<City> getAll();
+    public List<City> search(City city);
 }

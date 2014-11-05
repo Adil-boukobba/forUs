@@ -93,7 +93,8 @@ public class ArticleGroupAction extends ActionSupport {
 	
 	public String updateGroup() {
         logger.info("prepareupdategroup method called");
-        updated=true;                 
+        updated=true;    
+        group= articleGroupService.byId(group.getId());
         familles= articleFamilleService.getAll();
         groups= articleGroupService.getAll();       
         return SUCCESS;

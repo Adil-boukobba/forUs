@@ -1,0 +1,80 @@
+
+      <div class="row">
+      	<s:url action="list" namespace="/Region" var="reg_"></s:url>     
+      	<div class="col-md-4 menu-container">
+      	   <s:a href="%{reg_}">
+      		<div class=" menu-container-1">
+      			
+      				<img class="img" src="<s:url value="/img/1.png" namespace="/"></s:url>" alt=""/>
+      			
+      			<p class="text-left" style="color:white;">Gestion des regions</p>
+      		</div></s:a>
+      	</div>
+      	
+      	<div class="col-md-4 menu-container">
+      		<s:url action="list" namespace="/City" var="cit_"></s:url>   
+        		<s:a href="%{cit_}"><div class=" menu-container-2">
+      			
+      				<img class="img" src="<s:url value="/img/2.png" namespace="/"></s:url>" alt=""/>
+      			
+      			<p class="text-left" style="color:white;">Gestion des villes</p>
+      		</div></s:a>
+      	</div>
+      	
+      	<div class="col-md-4 menu-container">
+      	<s:url action="list" namespace="/HealthCenter" var="hc_"></s:url> 
+        		<s:a href="%{hc_}">
+      		  		<div class=" menu-container-3">
+      			
+      				<img class="img" src="<s:url value="/img/3.png" namespace="/"></s:url>" alt=""/>
+      			
+      			<p class="text-left" style="color:white;">Gestion des centres hopitaliers</p>
+      		</div></s:a>
+      	</div>
+      	
+      	
+      	<div class="col-md-4 menu-container">
+      	<s:url action="list" namespace="/Hospital" var="hos_"></s:url> 
+        		<s:a href="%{hos_}">
+      		  		<div class=" menu-container-4">
+      			
+      				<img class="img" src="<s:url value="/img/4.png" namespace="/"></s:url>" alt=""/>
+      			
+      			<p class="text-left" style="color:white;">Gestion des hopitaux</p>
+      		</div></s:a>
+      	</div>
+      	
+      	
+      	<div class="col-md-4 menu-container">
+      	<s:url action="list" namespace="/Department" var="dep_"></s:url> 
+        		<s:a href="%{dep_}">
+      		  		<div class=" menu-container-5">
+      			
+      				<img class="img" src="<s:url value="/img/5.png" namespace="/"></s:url>" alt=""/>
+      			
+      			<p class="text-left" style="color: white;">Gestion des départements</p>
+      		</div></s:a>
+      	</div>
+      	
+      	
+      	<div class="col-md-4 menu-container">
+      	<s:url action="list" namespace="/Section" var="sec_"></s:url> 
+        		<s:a href="%{sec_}">
+      		  		<div class=" menu-container-6">
+      			
+      				<img class="img" src="<s:url value="/img/6.png" namespace="/"></s:url>" alt=""/>
+      			
+      			<p class="text-left" style="color:white; " >Gestion des sections</p>
+      		</div></s:a>
+      	</div>
+      	
+      	
+      	
+      </div>
+      <div class="row">
+      <div class="col-md-offset-1"></div>
+      	<div class="col-md-10 mainContent"></div>
+      	<div class="col-md-offset-1"></div>
+      </div>
+
+    </div> <!-- /container -->

@@ -21,7 +21,8 @@ public class ArticleAction extends ActionSupport{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	private static final Logger logger = Logger.getLogger(ArticleAction.class);
+	
 	@Autowired
 	private ArticleService articleService;
 	@Autowired
@@ -30,7 +31,7 @@ public class ArticleAction extends ActionSupport{
 	private ArticleGroupService articleGroupService;
 	
 	
-	private static final Logger logger = Logger.getLogger(ArticleAction.class);
+
 	
 	
 	private List<ArticleFamille> familles;
@@ -117,6 +118,7 @@ public class ArticleAction extends ActionSupport{
 	public String updateArticle() {
         logger.info("prepareupdateArticle method called");
         updated=true;               
+        article= articleService.byId(article.getId());
         familles= articleFamilleService.getAll();
         groups= articleGroupService.getAll();
         articles = articleService.getAll();
@@ -125,8 +127,7 @@ public class ArticleAction extends ActionSupport{
 	
 	
 	 public void prepare() throws Exception {
-	        article = null;
-	        System.out.println("first running...");
+	        article = null;	        
 	    }
 	
 }

@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import d3Soft.hisys.model.HealthCenter;
 
+@Repository("healthCenterDAO")
 public class HealthCenterDaoImpl implements HealthCenterDao{
 
 	@Autowired
@@ -43,10 +45,11 @@ public class HealthCenterDaoImpl implements HealthCenterDao{
 		return (HealthCenter) sessionFactory.getCurrentSession().get(HealthCenter.class, id);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<HealthCenter> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return sessionFactory.getCurrentSession().createQuery("from HealthCenter").list();
 	}
 	
 	

@@ -15,6 +15,9 @@ public class HealthCenter {
 	@Column(name="health_center_name")
 	private String name;
 	
+	@Column(name="health_center_code")
+	private String code;
+	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="city_id")
 	private City city;
@@ -52,6 +55,14 @@ public class HealthCenter {
 
 	public void setHospitals(List<Hospital> hospitals) {
 		this.hospitals = hospitals;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 	
 	

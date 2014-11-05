@@ -9,6 +9,6 @@ public interface ArticleService {
 	public void insert(Article article);
 	public void update(Article article);
 	public void delete(Article article);
-	public Article byId(Article article);
+	public Article byId(int id);
 	public List<Article> getAll();
 }

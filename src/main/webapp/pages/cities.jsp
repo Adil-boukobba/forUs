@@ -1,111 +1,127 @@
 <%@ taglib prefix="s" uri="/struts-tags"%> 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html>
-<head>
-    <title></title>
-    <style>
-    table.list
-    {
-        border-collapse:collapse;
-        width: 40%;
-    }
-    table.list, table.list td, table.list th
-    {
-        border:1px solid gray;
-        padding: 5px;
-    }
-    </style>
-</head>
-<body>
+<%@include file="../WEB-INF/fragement/header.jspf" %>
+<%@include file="../WEB-INF/fragement/head.jspf" %>
+
+
+  <div class="container">
+  
+    	<form action="search" method="post"> 
+  <div class="row">
+  	
+ 	
+  
+  		 <div class="col-md-2">
+  		 # :<input type="text" class="form-control" name="city.id"/>
+  		 </div>
+  		 <div class="col-md-2">
+  		 Code<input type="text" class="form-control" name="city.code"/>
+  		 </div>
+  		<div class="col-md-2">
+  		Name<input type="text" class="form-control" name="city.name"/>
+  		</div>
+  		
+  		<div class="col-md-2">
+  		 Region<input type="text" class="form-control" name="city.region.name"/>
+  		</div>
+  		<div class="col-md-4"></div>
+  		  </div>
+  		<div class="row">
+  		<div class="col-md-2">
+  		<button type="submit" class="btn btn-success">Filtrer</button>
+  		</div>
+  		</div>
+  	</form>
+  
+  
   
 
-<s:form method="post" action="add">
-<table>
-
-<c:if test="${ updated ==true }"> 
-<tr>
-	<td>
-		
+  
+  
+	<div class="row">
+	<c:if  test="${!empty regions}">
+		<div class="col-md-offset-2 col-md-6">
 			
-		<input type="hidden" name="updated" value="${updated }">
-	</td>
-	<td>		
-		<input type="hidden" name="city.id" value="${city.id}">
-	</td>
-	</tr>
-</c:if>
-
-	<tr>
-	
-		<td>
-			Code
-		</td>
-		
-		<td>
-		 <input type="text" name="city.code" <c:if test="${updated==true }">value='${ city.code}'</c:if>/>
-		 </td>
-	</tr>	
-<tr>	
-		<td>
-			Name: 
-		</td>
-		
-		<td>
-		 <input type="text" name="city.name" value='<c:if test="${updated==true }">${city.name}</c:if>'/>
-		 </td>
-	</tr>	
-<tr>
-
-<tr>	
-		<td>
-			Region: 
-		</td>
-		
-		<td>
-		<select  name="city.region.id" style="width:142px;height:22px">
-		<c:if  test="${!empty regions}">
-			 <c:forEach items="${regions}" var="reg">
-			<option value="${reg.id}"  <c:if  test="${city.region.id==reg.id}"> selected="selected"</c:if> >${reg.name}</option>
-			</c:forEach>
+			<table class="table" style="text-align: center">
+				<caption>Cities:</caption>
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Code</th>
+						<th>Name</th>
+						<th>Region</th>
+						<th>Options</th>						
+					</tr>
+				</thead>
+				<tbody>
+				
+				<c:forEach items="${cities}" var="cit">
+					<tr>
+						 <td>${cit.id}</td>
+		                <td>${cit.code}</td>
+		                <td>${cit.name}</td> 
+		                <td>${cit.region.name}</td>     
+						<td>
+						<s:url action="delete" namespace="/City" var="del_">
+							<s:param name="city.id">${cit.id}</s:param>
+						</s:url>
+						<s:url action="update" namespace="/City" var="up_">
+							<s:param name="city.id">${cit.id}</s:param>
+						</s:url>
+						<s:a href="%{up_}"><button type="button" class="btn btn-warning">Update</button></s:a>
+						<s:a href="%{del_}"><button type="button" class="btn btn-danger">Delete</button></s:a>
+						</td>
+					</tr>				
+				</c:forEach>					
+				</tbody>
+			</table>
+			
+		</div>
 		</c:if>
-	</select>
-		 </td>
-	</tr>	
-<tr>
-	<td></td>
-	<td>
-		<s:submit value="Save"></s:submit>
-	</td>
-</tr>
-</table>
-</s:form>
+		
+		
+		
+		
+	<div class="col-md-4">
+		<form role="form" method="post" action="add">
+		
+		<c:if test="${ updated ==true }"> 
+			<input type="hidden" name="updated" value="${updated }">		
+			<input type="hidden" name="city.id" value="${city.id}">
+		</c:if>
+		
+		  <div class="form-group">
+		    <label for="exampleInputEmail1">Code</label>
+		    <input type="number" class="form-control" name="city.code" <c:if test="${updated==true }">value='${ city.code}'</c:if> placeholder="Enter le nom">
+		  </div>
+		 
+		 <div class="form-group">
+		    <label for="exampleInputEmail1">Nom</label>
+		    <input type="text" class="form-control"  name="city.name" value='<c:if test="${updated==true }">${city.name}</c:if>' placeholder="Enter le nom">
+		  </div>
+		 
+		  <div class="form-group">
+			    <label for="exampleInputPassword1">Region</label>
+			<select name="city.region.id" class="form-control">
+			  <c:forEach items="${regions}" var="reg">
+					<option value="${reg.id}"  <c:if  test="${city.region.id==reg.id}"> selected="selected"</c:if> >${reg.name}</option>
+				</c:forEach>
+			</select>  
+		  </div>
+		 
+  <button type="submit" class="btn btn-success">Save</button>
+</form>
+		</div>
+	</div>
+</div>
+  
+  
+  
+  
+  
+  
 
 
-  
-      
-<h3>Cities</h3>
-<c:if  test="${!empty cities}">
-    <table class="list">
-        <tr>
-            <th align="left">Id</th>
-            <th align="left">Code</th>
-            <th align="left">Name</th> 
-            <th align="left">Region</th>                        
-            <th> option</th>
-        </tr>
-        <c:forEach items="${cities}" var="cit">
-            <tr>
-                <td>${cit.id}</td>
-                <td>${cit.code}</td>
-                <td>${cit.name}</td> 
-                <td>${cit.region.name}</td>                
-                <td><a href="delete/${cit.id}">delete</a> &nbsp;
-                 <a href="update/${cit.id}">update</a> 
-				</td> 
-            </tr>
-        </c:forEach>
-    </table>
-</c:if>
-  
-</body>
-</html>
+
+
+<%@include file="../WEB-INF/fragement/footer.jspf" %>

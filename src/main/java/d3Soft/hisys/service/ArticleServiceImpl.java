@@ -46,8 +46,8 @@ public class ArticleServiceImpl implements ArticleService {
 
 	@Transactional
 	@Override
-	public Article byId(Article article) {		
-		return articleDAO.byId(article.getId());
+	public Article byId(int id) {		
+		return articleDAO.byId(id);
 	}
 
 	@Transactional

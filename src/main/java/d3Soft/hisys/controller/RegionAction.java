@@ -25,9 +25,19 @@ public class RegionAction  extends ActionSupport{
 	private Region region;
 	private List<Region> regions;
 	private boolean updated;
+	private boolean lock;
 	
 	
 	
+	
+	public boolean isLock() {
+		return lock;
+	}
+
+	public void setLock(boolean lock) {
+		this.lock = lock;
+	}
+
 	public RegionService getRegionService() {
 		return regionService;
 	}
@@ -71,8 +81,10 @@ public class RegionAction  extends ActionSupport{
        logger.info("addRegion method called");
        if(updated==false)
        	regionService.insert(region);
-       else 
-       	regionService.update(region);
+       else {
+       		regionService.unlock(region);
+    	   regionService.update(region);
+       }
        updated=false;
        return SUCCESS;
    }
@@ -82,13 +94,22 @@ public class RegionAction  extends ActionSupport{
        return SUCCESS;
    }
 	
-	public String updateRegion() {
+	public String updateRegion() {		
        logger.info("prepareupdateRegion method called");
-       updated=true;                       
+       updated=true;  
+       regionService.lock(region);
+       region=regionService.byId(region.getId());
        regions = regionService.getAll();
        return SUCCESS;
    }
 	
+	
+	public String searchRegion()
+	{
+		logger.info("search Region method called");			
+	     regions = regionService.search(region);
+		return SUCCESS;
+	} 
 	
 	 public void prepare() throws Exception {
 	        region = null;	        

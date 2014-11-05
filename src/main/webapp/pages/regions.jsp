@@ -1,93 +1,108 @@
 <%@ taglib prefix="s" uri="/struts-tags"%> 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html>
-<head>
-    <title></title>
-    <style>
-    table.list
-    {
-        border-collapse:collapse;
-        width: 40%;
-    }
-    table.list, table.list td, table.list th
-    {
-        border:1px solid gray;
-        padding: 5px;
-    }
-    </style>
-</head>
-<body>
+<%@include file="../WEB-INF/fragement/header.jspf" %>
+<%@include file="../WEB-INF/fragement/head.jspf" %>
   
-
-<s:form method="post" action="add">
-<table>
-
-<c:if test="${ updated ==true }"> 
-<tr>
-	<td>
-		
+  <div class="container">
+  <form action="searsh" method="post">  	
+  <div class="row">
+  	
+  	
+ 		<div class="col-md-2">
+  		 # :<input type="text" class="form-control" name="region.id"/>
+  		 </div>
+  		 <div class="col-md-2">
+  		 Code<input type="text" class="form-control" name="region.code"/> 
+  		 </div>
+  		 <div class="col-md-2">
+  		 Name<input type="text" class="form-control" name="region.name"/>
+  		 </div>
+  				
+  		<div class="col-md-2" style="margin-top:20px">
+  		<button type="submit" class="btn btn-success"> Filtrer</button>
+  		</div>
+  	</div>
+  	</form>
+  
+  
+  
+  
+  
+  
+	<div class="row">
+	<c:if  test="${!empty regions}">
+		<div class="col-md-offset-2 col-md-6">
 			
-		<input type="hidden" name="updated" value="${updated }">
-	</td>
-	<td>		
-		<input type="hidden" name="region.id" value="${region.id}">
-	</td>
-	</tr>
-</c:if>
-
-	<tr>
-	
-		<td>
-			Code
-		</td>
+			<table class="table" style="text-align: center">
+				<caption>Regions:</caption>
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Code</th>
+						<th>Name</th>
+						<th>Options</th>						
+					</tr>
+				</thead>
+				<tbody>
+				
+				<c:forEach items="${regions}" var="reg">
+					<tr>
+						<td>${reg.id}</td>
+               			<td>${reg.code}</td>
+                		<td>${reg.name}</td>   
+						<td>
+						<s:url action="delete" namespace="/Region" var="del_">
+							<s:param name="region.id">${reg.id}</s:param>
+						</s:url>
+						<s:url action="update" namespace="/Region" var="up_">
+							<s:param name="region.id">${reg.id}</s:param>
+						</s:url>
+						<s:a href="%{up_}"><button type="button" class="btn btn-warning">Update</button></s:a>
+						<s:a href="%{del_}"><button type="button" class="btn btn-danger">Delete</button></s:a>
+						</td>
+					</tr>				
+				</c:forEach>					
+				</tbody>
+			</table>
+			
+		</div>
+		</c:if>
 		
-		<td>
-		 <input type="text" name="region.code" <c:if test="${updated==true }">value='${ region.code}'</c:if>/>
-		 </td>
-	</tr>	
-<tr>	
-		<td>
-			Name: 
-		</td>
 		
-		<td>
-		 <input type="text" name="region.name" value='<c:if test="${updated==true }">${region.name}</c:if>'/>
-		 </td>
-	</tr>	
-<tr>
-	<td></td>
-	<td>
-		<s:submit value="Save"></s:submit>
-	</td>
-</tr>
-</table>
-</s:form>
+		
+		
+	<div class="col-md-4">
+		<form role="form" method="post" action="add">
+		
+		<c:if test="${ updated ==true }"> 
+			<input type="hidden" name="updated" value="${updated }">		
+			<input type="hidden" name="region.id" value="${region.id}">
+		</c:if>
+		
+		  <div class="form-group">
+		    <label for="exampleInputEmail1">Code</label>
+		    <input type="number" class="form-control" name="region.code" <c:if test="${updated==true }">value='${ region.code}'</c:if> placeholder="Enter le nom">
+		  </div>
+		 
+		 <div class="form-group">
+		    <label for="exampleInputEmail1">Nom</label>
+		    <input type="text" class="form-control"  name="region.name" value='<c:if test="${updated==true }">${region.name}</c:if>' placeholder="Enter le nom">
+		  </div>
+		 
+		 
+  <button type="submit" class="btn btn-success">Save</button>
+</form>
+		</div>
+	</div>
+</div>
+  
+  
+  
+  
+  
+  
 
 
-  
-      
-<h3>Regions</h3>
-<c:if  test="${!empty regions}">
-    <table class="list">
-        <tr>
-            <th align="left">Id</th>
-            <th align="left">Code</th>
-            <th align="left">Name</th>                        
-            <th> option</th>
-        </tr>
-        <c:forEach items="${regions}" var="reg">
-            <tr>
-                <td>${reg.id}</td>
-                <td>${reg.code}</td>
-                <td>${reg.name}</td>                
-                
-                <td><a href="delete/${reg.id}">delete</a> &nbsp;
-                 <a href="update/${reg.id}">update</a> 
-				</td> 
-            </tr>
-        </c:forEach>
-    </table>
-</c:if>
-  
-</body>
-</html>
+
+
+<%@include file="../WEB-INF/fragement/footer.jspf" %>

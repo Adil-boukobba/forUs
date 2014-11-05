@@ -1,0 +1,12 @@
+ <%@ taglib prefix="s" uri="/struts-tags"%>
+<div class="container" style="margin-top:10px;">
+	<s:url action="/" namespace="/" var="acc_"></s:url>
+
+    <s:a href="%{acc_}">
+      <img src="<s:url value="/img/logo.png" namespace="/"></s:url>"/>
+	</s:a>
+      <p class="text-center lead"><b>HISYS</b> - Hospital Information System</p>
+      <div class="menu-hidden"></div>
+      <div class="row">
+      	<s:url action="list" namespace="/Region" var="reg_"></s:url>     
+      

@@ -105,6 +105,9 @@
             <param name="region.id">{1}</param>
             <result>/pages/regions.jsp</result>
         </action>
+        <action name="search" class="d3Soft.hisys.controller.RegionAction" method="searchRegion">            
+            <result>/pages/regions.jsp</result>
+        </action>
         <action name="*" class="d3Soft.hisys.controller.RegionAction"  method="listRegions">
           <result>/pages/regions.jsp</result>
         </action> 
@@ -124,9 +127,91 @@
             <param name="city.id">{1}</param>
             <result>/pages/cities.jsp</result>
         </action>
-        <action name="*" class="d3Soft.hisys.controller.CityAction"  method="listCitys">
-          <result>/pages/cities.jsp</result>
+        <action name="search" class="d3Soft.hisys.controller.CityAction" method="searchCity">            
+            <result>/pages/cities.jsp</result>
+        </action>
+        <action name="*" class="d3Soft.hisys.controller.CityAction"  method="listCities">
+          <result>/pages/centers.jsp</result>
         </action> 
     </package>
+        <package name="HealthCenter" namespace="/HealthCenter" extends="struts-default">      
+        <action name="list" class="d3Soft.hisys.controller.HealthCenterAction" method="listCenters">
+            <result>/pages/centers.jsp</result>
+        </action>
+        <action name="add" class="d3Soft.hisys.controller.HealthCenterAction" method="addCenter">
+            <result type="redirect">/HealthCenter/list</result>
+        </action>
+        <action name="delete/*" class="d3Soft.hisys.controller.HealthCenterAction" method="deleteCenter">
+            <param name="center.id">{1}</param>
+            <result type="redirect">/HealthCenter/list</result>
+        </action>
+        <action name="update/*" class="d3Soft.hisys.controller.HealthCenterAction" method="updateCenter">
+            <param name="center.id">{1}</param>
+            <result>/pages/centers.jsp</result>
+        </action>
+        <action name="*" class="d3Soft.hisys.controller.HealthCenterAction"  method="listCenters">
+          <result>/pages/centers.jsp</result>
+        </action> 
+    </package>
+    
      
+   <package name="Hospital" namespace="/Hospital" extends="struts-default">      
+        <action name="list" class="d3Soft.hisys.controller.HospitalAction" method="listHospitals">
+            <result>/pages/hospitals.jsp</result>
+        </action>
+        <action name="add" class="d3Soft.hisys.controller.HospitalAction" method="addHospital">
+            <result type="redirect">/Hospital/list</result>
+        </action>
+        <action name="delete/*" class="d3Soft.hisys.controller.HospitalAction" method="deleteHospital">
+            <param name="hospital.id">{1}</param>
+            <result type="redirect">/Hospital/list</result>
+        </action>
+        <action name="update/*" class="d3Soft.hisys.controller.HospitalAction" method="updateHospital">
+            <param name="hospital.id">{1}</param>
+            <result>/pages/hospitals.jsp</result>
+        </action>
+        <action name="*" class="d3Soft.hisys.controller.HospitalAction"  method="listHospitals">
+          <result>/pages/hospitals.jsp</result>
+        </action> 
+    </package>
+    
+    	<package name="Section" namespace="/Section" extends="struts-default">      
+        <action name="list" class="d3Soft.hisys.controller.SectionAction" method="listSections">
+            <result>/pages/sections.jsp</result>
+        </action>
+        <action name="add" class="d3Soft.hisys.controller.SectionAction" method="addSection">
+            <result type="redirect">/Section/list</result>
+        </action>
+        <action name="delete/*" class="d3Soft.hisys.controller.SectionAction" method="deleteSection">
+            <param name="section.id">{1}</param>
+            <result type="redirect">/Section/list</result>
+        </action>
+        <action name="update/*" class="d3Soft.hisys.controller.SectionAction" method="updateSection">
+            <param name="section.id">{1}</param>
+            <result>/pages/sections.jsp</result>
+        </action>
+        <action name="*" class="d3Soft.hisys.controller.SectionAction"  method="listSections">
+          <result>/pages/sections.jsp</result>
+        </action> 
+    </package>
+     <package name="Department" namespace="/Department" extends="struts-default">      
+        <action name="list" class="d3Soft.hisys.controller.DepartementAction" method="listDepartements">
+            <result>/pages/departments.jsp</result>
+        </action>
+        <action name="add" class="d3Soft.hisys.controller.DepartementAction" method="addDepartement">
+            <result type="redirect">/Department/list</result>
+        </action>
+        <action name="delete/*" class="d3Soft.hisys.controller.DepartementAction" method="deleteDepartement">
+            <param name="departement.id">{1}</param>
+            <result type="redirect">/Department/list</result>
+        </action>
+        <action name="update/*" class="d3Soft.hisys.controller.DepartementAction" method="updateDepartement">
+            <param name="departement.id">{1}</param>
+            <result>/pages/departements.jsp</result>
+        </action>
+        <action name="*" class="d3Soft.hisys.controller.DepartementAction"  method="listDepartements">
+          <result>/pages/departments.jsp</result>
+        </action> 
+    </package>
+    
 </struts>

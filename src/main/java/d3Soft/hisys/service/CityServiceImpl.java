@@ -56,6 +56,13 @@ public class CityServiceImpl implements CityService {
 	public List<City> getAll() {		
 		return cityDAO.getAll();
 	}
+
+	@Transactional
+	@Override
+	public List<City> search(City city) {
+ 
+		return cityDAO.search(city);
+	}
 	
 	
 }

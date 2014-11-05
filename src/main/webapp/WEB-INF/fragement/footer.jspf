@@ -1,0 +1,11 @@
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+     
+    <script src="<s:url value="/js/bootstrap.min.js" namespace="/"></s:url>"></script>
+    <script src="<s:url value="/js/costum.js" namespace="/"></s:url>"></script>
+    <footer class="text-center">
+    <p>Hisys&copy; 2014  -  D3soft.ma</p>
+    </footer>
+  </body>
+</html>

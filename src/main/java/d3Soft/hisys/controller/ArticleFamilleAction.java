@@ -100,7 +100,8 @@ public class ArticleFamilleAction extends ActionSupport {
 	
 	public String updateFamille() {
         logger.info("prepareupdateArticle method called");
-        updated=true;                       
+        updated=true;      
+        famille= articleFamilleService.byId(famille.getId());
         familles = articleFamilleService.getAll();
         return SUCCESS;
     }

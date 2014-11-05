@@ -3,7 +3,6 @@ package d3Soft.hisys.controller;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.omg.PortableInterceptor.SUCCESSFUL;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import d3Soft.hisys.model.City;
@@ -99,12 +98,20 @@ public class CityAction {
    
    public String updateCity() {
        logger.info("prepareupdateCity method called");
-       updated=true;               
+       updated=true;         
+       city=cityService.byId(city.getId());
        regions= regionService.getAll();        
        cities = cityService.getAll();
        return "success";
    }
    
+	public String searchCity()
+	{
+		logger.info("search City method called");
+		regions= regionService.getAll();  
+	     cities = cityService.search(city);
+		return "success";
+	} 
    
     public void prepare() throws Exception {
            city = null;          

@@ -63,7 +63,7 @@
 	<select  name="group.famille.id">
 		<c:if  test="${!empty familles}">
 			 <c:forEach items="${familles}" var="fam">
-			<option value="${fam.id}">${fam.nbr}</option>
+			<option value="${fam.id}" <c:if  test="${group.famille.id==fam.id}"> selected="selected"</c:if>>${fam.nbr}</option>
 			</c:forEach>
 		</c:if>
 	</select>

@@ -1,8 +1,12 @@
 package d3Soft.hisys.dao;
 
+
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -31,14 +35,16 @@ public class RegionDaoImpl implements RegionDao{
 	}
 
 	@Override
-	public void update(Region region) {
+	public void update(Region region) {				
 		sessionFactory.getCurrentSession().update(region);
 		
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void delete(Region region) {
 		sessionFactory.getCurrentSession().delete(region);
+		sessionFactory.getCurrentSession().lock(region, LockMode.UPGRADE);
 		
 	}
 
@@ -53,4 +59,43 @@ public class RegionDaoImpl implements RegionDao{
 		return sessionFactory.getCurrentSession().createQuery("from Region").list();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Region> search(Region region) {		
+		Criteria criteria=sessionFactory.getCurrentSession().createCriteria(Region.class);
+		
+		if(region!=null){
+			if(region.getId()>0)
+			{
+				criteria.add(Restrictions.eq("id", region.getId()));
+				return criteria.list();
+			}
+			
+			if(region.getCode()>0)
+			{
+				criteria.add(Restrictions.eq("code", region.getCode()));
+			}
+			if(region.getName()!=null)
+			{
+				criteria.add(Restrictions.like("name", "%"+region.getName()+"%"));
+			}			
+			return criteria.list();
+	}
+		return getAll();
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public void lock(Region region) {		
+		sessionFactory.getCurrentSession().lock(region, LockMode.UPGRADE);		
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public void unlock(Region region) {		
+		sessionFactory.getCurrentSession().lock(region, LockMode.NONE);		
+	}
+	
+	
+	
 }

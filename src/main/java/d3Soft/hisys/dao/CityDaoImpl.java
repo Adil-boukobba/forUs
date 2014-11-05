@@ -2,7 +2,9 @@ package d3Soft.hisys.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -52,6 +54,37 @@ public class CityDaoImpl implements CityDao {
 	public List<City> getAll() {
 		
 		return sessionFactory.getCurrentSession().createQuery("from City").list();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<City> search(City city) {
+
+		Criteria criteria=sessionFactory.getCurrentSession().createCriteria(City.class);
+		
+		if(city!=null){
+			if(city.getId()>0)
+			{
+				criteria.add(Restrictions.eq("id", city.getId()));
+				return criteria.list();
+			}
+			
+			if(city.getCode()>0)
+			{
+				criteria.add(Restrictions.eq("code", city.getCode()));
+			}
+			if(city.getName()!=null)
+			{
+				criteria.add(Restrictions.like("name", "%"+city.getName()+"%"));
+			}
+			if(city.getRegion()!=null)
+			{
+				criteria.createCriteria("region")
+				.add(Restrictions.like("name", "%"+city.getRegion().getName()+"%"));
+			}
+			return criteria.list();
+	}
+		return getAll();
 	}
 
 	

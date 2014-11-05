@@ -10,4 +10,7 @@ public interface RegionService {
 	public void delete(Region region);
 	public Region byId(int id);
 	public List<Region> getAll();
+	public List<Region> search(Region region);
+	public void lock(Region region);
+	public void unlock(Region region);
 }

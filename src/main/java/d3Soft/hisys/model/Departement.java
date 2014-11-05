@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name="com_department")
 public class Departement {

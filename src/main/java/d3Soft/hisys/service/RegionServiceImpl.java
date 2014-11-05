@@ -60,4 +60,21 @@ public class RegionServiceImpl implements RegionService{
 		return regionDAO.getAll();
 	}
 
+	@Override
+	public List<Region> search(Region region) {		
+		return regionDAO.search(region);
+	}
+
+	@Override
+	public void lock(Region region) {
+		regionDAO.lock(region);
+		
+	}
+
+	@Override
+	public void unlock(Region region) {
+		regionDAO.unlock(region);
+		
+	}
+
 }
